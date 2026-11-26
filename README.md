@@ -2,6 +2,8 @@
 
 A private, mobile-first birthday surprise website made for **Vaatsal Bhai** by **Meet, Devansh, Tej, Dhruv, Bhumi & Ronit**.
 
+**Live Website:** https://happy-birthday-vaatsal.vercel.app/
+
 ## Local Development
 
 ```bash
