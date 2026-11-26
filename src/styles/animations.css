@@ -1,0 +1,198 @@
+/* Subtle twinkling starfield */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+}
+
+.star-dot.is-pink {
+  background: var(--pink-bright);
+  box-shadow: 0 0 10px rgba(255, 79, 163, 0.75);
+}
+
+.star-dot.is-lavender {
+  background: var(--lavender);
+  box-shadow: 0 0 10px rgba(185, 162, 255, 0.65);
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+
+/* Code rain falling animation (active only during reveal countdown) */
+.code-column {
+  animation: codeFall var(--fall-duration, 2.2s) linear infinite;
+  animation-delay: var(--fall-delay, 0s);
+}
+
+@keyframes codeFall {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(155vh);
+    opacity: 0;
+  }
+}
+
+/* Countdown pulse */
+.countdown-pulse {
+  animation: countPop 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes countPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero entrance */
+.hero-reveal-anim {
+  animation: heroEnter 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Cake gentle bounce & candle flame flicker */
+.cake-float {
+  animation: cakeBob 3.2s ease-in-out infinite;
+}
+
+@keyframes cakeBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.candle-flame {
+  transform-origin: center bottom;
+  animation: flameFlicker 1.2s ease-in-out infinite alternate;
+}
+
+.candle-flame.delay-1 {
+  animation-delay: 0.25s;
+}
+
+.candle-flame.delay-2 {
+  animation-delay: 0.55s;
+}
+
+@keyframes flameFlicker {
+  0% {
+    transform: scaleY(0.95) rotate(-2deg);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scaleY(1.08) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+/* Scroll reveal sections */
+.reveal-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Heart tile entrance animation */
+.heart-tile-animated {
+  opacity: 0;
+  transform: scale(0.65) translateY(16px) rotate(var(--tile-tilt, 0deg));
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  transition-delay: var(--tile-delay, 0ms);
+}
+
+.heart-grid.is-assembled .heart-tile-animated {
+  opacity: 1;
+  transform: scale(1) translateY(0) rotate(var(--tile-tilt, 0deg));
+}
+
+/* Confetti canvas overlay */
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .star-dot,
+  .code-column,
+  .countdown-pulse,
+  .hero-reveal-anim,
+  .cake-float,
+  .candle-flame {
+    animation: none !important;
+  }
+
+  .reveal-block,
+  .heart-tile-animated {
+    opacity: 1 !important;
+    transform: rotate(var(--tile-tilt, 0deg)) !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,14 @@
+VAATSAL BHAI — BIRTHDAY WEBSITE PROJECT PACK
+
+Open README_START_HERE.md first.
+Then paste ANTIGRAVITY_MASTER_PROMPT.md into Google Antigravity with this entire folder available as project context.
+
+Key docs:
+- docs/PRD.md
+- docs/TECHNICAL_SPEC.md
+- docs/VISUAL_DESIGN_AND_UX.md
+- docs/CONTENT_AND_ASSETS.md
+- docs/QA_AND_DEPLOYMENT.md
+- docs/REFERENCE_VIDEO_NOTES.md
+
+The formatted PRD is Vaatsal_Birthday_PRD.docx.
